@@ -1,3 +1,5 @@
+import shortId from 'shortid';
+
 export const Str = {
   applyRawSql: (
     value: string | undefined | number,
@@ -30,6 +32,10 @@ export const Str = {
     const charsToRemove = ["'", '"'];
     const regex = new RegExp(`[${charsToRemove.join('')}]`, 'g');
     return str.replace(regex, '');
+  },
+  generateShortId: (charCount: number) => {
+    const id = shortId.generate();
+    return id.slice(0, charCount)?.toUpperCase();
   }
 };
 

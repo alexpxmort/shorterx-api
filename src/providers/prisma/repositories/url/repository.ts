@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { baseRepository } from '@providers/prisma/repositories/baseRepository';
-import { UserOrm } from './types';
+import { UrlOrm } from './type';
 
 const repository = (client: PrismaClient) => {
-  const commonQuery = baseRepository<UserOrm>(client, 'user', {
-    description: 'Repository for User',
+  const commonQuery = baseRepository<UrlOrm>(client, 'url', {
+    description: 'Repository for Url',
     updatedAtField: 'updated_at',
-    fieldsNotEditable: ['id', 'created_at', 'updated_at']
+    fieldsNotEditable: ['id', 'created_at', 'deleted_at', 'updated_at']
   });
 
   return {

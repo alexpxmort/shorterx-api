@@ -16,9 +16,24 @@ datasource db {
 
 model user {
   id        String    @id @db.Char(36)
-  name      String    @db.VarChar(255)
-  email     String    @db.VarChar(255)
-  password  String    @db.VarChar(255)
+  name      String    @map("name") @db.VarChar(255)
+  email     String    @map("email") @db.VarChar(255)
+  password  String    @map("password") @db.VarChar(255)
   createdAt DateTime? @default(now()) @db.Timestamp(0)
   updatedAt DateTime? @default(now()) @db.Timestamp(0)
+  url       url[]
+}
+
+model url {
+  id          String    @id @db.Char(36)
+  originalUrl String    @map("original_url")
+  shortUrl    String    @unique @map("short_url")
+  createdAt   DateTime? @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime? @default(now()) @db.Timestamp(0)
+  deletedAt   DateTime? @db.Timestamp(0)
+  clickCount  Int       @default(0) @map("click_count")
+  userId      String?   @map("userId") @db.Char(36)
+  user        user?     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "url_userId_fkey")
 }

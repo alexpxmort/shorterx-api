@@ -22,10 +22,21 @@ module.exports = {
     '!**/src/usecases/shared/error.ts',
     '!**/src/ports/**',
     '!**/src/providers/prisma/fake-data.ts',
+    '!**/src/providers/express/routes/**',
     '!**/src/providers/express/server.ts',
+    '!**/src/providers/express/server.ts',
+    '!**/src/providers/prisma/**',
     '!**/src/providers/pino/**',
     '!**/src/providers/express/middlewares/mappedDiagnosticContext.ts',
     '!**/src/providers/express/middlewares/sanitizeMiddleware.ts',
     '!**/test/**'
-  ]
-};
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70
+    }
+  }
+}
