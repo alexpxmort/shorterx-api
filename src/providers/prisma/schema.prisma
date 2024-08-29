@@ -1,0 +1,24 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextIndex", "fullTextSearch", "interactiveTransactions"]
+}
+
+generator custom_generator {
+  provider     = "prisma-generator-fake-data"
+  emptyValueAs = "null"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model user {
+  id        String    @id @db.Char(36)
+  name      String    @db.VarChar(255)
+  email     String    @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  createdAt DateTime? @default(now()) @db.Timestamp(0)
+  updatedAt DateTime? @default(now()) @db.Timestamp(0)
+}

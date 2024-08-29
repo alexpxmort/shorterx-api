@@ -1,0 +1,29 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		],
+		"@babel/preset-typescript"
+	],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"alias": {
+					"@ports": "./src/ports",
+					"@usecases": "./src/usecases",
+					"@providers": "./src/providers",
+					"types": "./src/types/usecases",
+					"@helpers": "./src/helpers",
+					"@docs": "./docs/"
+				}
+			}
+		]
+	],
+	"ignore": ["test/**/*.spec.ts"]
+}

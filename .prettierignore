@@ -1,0 +1,14 @@
+# Ignore artifacts:
+build
+node_modules
+src/providers/prisma/fake-data.ts
+# JSON files
+*.json
+
+# .ignore files
+.prettierignore
+/src/providers/prisma/fake-data.ts
+
+# Configuration and docs
+.eslintrc
+README.md
