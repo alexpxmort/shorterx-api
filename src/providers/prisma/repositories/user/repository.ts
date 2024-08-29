@@ -5,8 +5,8 @@ import { UserOrm } from './types';
 const repository = (client: PrismaClient) => {
   const commonQuery = baseRepository<UserOrm>(client, 'user', {
     description: 'Repository for User',
-    updatedAtField: 'updated_at',
-    fieldsNotEditable: ['id', 'created_at', 'updated_at']
+    updatedAtField: 'updatedAt',
+    fieldsNotEditable: ['id', 'createdAt', 'updatedAt']
   });
 
   return {

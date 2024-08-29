@@ -12,7 +12,8 @@ import { sanitizeMiddleware } from './middlewares/sanitizeMiddleware';
 import { tracking } from './middlewares/tracking';
 import { errors } from './middlewares/errors';
 import { clsCorrelationId } from './middlewares/mappedDiagnosticContext';
-import swaggerDocument from '@docs/swagger.json';
+import { getSwaggerJsDoc } from '@docs/swagger';
+import { DEFAULT_PORT_NUMBER } from '@helpers/constants';
 
 export default class App {
   service: express.Express;
@@ -44,10 +45,13 @@ export default class App {
   }
 
   async setupDocumentation() {
+    const baseUrl =
+      process.env.BASE_URL ??
+      `http://localhost:${process.env.PORT_NUMBER ?? DEFAULT_PORT_NUMBER}`;
     this.service.use(
       '/api/docs',
       swaggerUi.serve,
-      swaggerUi.setup(swaggerDocument)
+      swaggerUi.setup(getSwaggerJsDoc(baseUrl))
     );
   }
 

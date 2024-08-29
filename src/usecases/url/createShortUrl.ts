@@ -2,6 +2,7 @@ import { UrlRepository } from '@providers/prisma/repositories/url/type';
 import { ShortUrlCreate } from './types';
 import { client } from '@ports/clientDB';
 import { Str } from '@helpers/str';
+import { DEFAULT_PORT_NUMBER } from '@helpers/constants';
 
 type CreateShortUrl = (
   urlRepository: UrlRepository
@@ -13,7 +14,7 @@ export const createShortUrl: CreateShortUrl =
 
     const baseUrl =
       process.env.BASE_URL ||
-      `http://localhost:${process.env.PORT_NUMBER ?? '7000'}`;
+      `http://localhost:${process.env.PORT_NUMBER ?? DEFAULT_PORT_NUMBER}`;
 
     const existsShortenUrl = await urlRepository(client).getOne({
       shortUrl: `${baseUrl}/${shortId}`

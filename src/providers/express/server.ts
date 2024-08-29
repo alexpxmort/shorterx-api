@@ -1,9 +1,10 @@
+import { DEFAULT_PORT_NUMBER } from '@helpers/constants';
 import App from './app';
 import { router } from './routes';
 import { logger } from '@ports/providers/logger';
 
 export async function start(): Promise<string> {
-  const strPort = process.env.PORT_NUMBER || '7000';
+  const strPort = process.env.PORT_NUMBER || DEFAULT_PORT_NUMBER;
   const port = Number.parseInt(strPort, 10);
 
   if (Number.isNaN(port)) {
