@@ -1,4 +1,4 @@
-export const getSwaggerJsDoc = (baseUrl) => {
+export const getSwaggerJsDoc = (baseUrl: string) => {
   return {
     openapi: '3.0.0',
     info: {

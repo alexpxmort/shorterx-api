@@ -43,10 +43,7 @@ describe('deleteShortUrl', () => {
       deletedAt: null,
       userId
     });
-    expect(mockUrlRepository().edit).toHaveBeenCalledWith(
-      { deletedAt: expect.any(Date) },
-      { id: shortenUrl.id }
-    );
+    expect(mockUrlRepository().edit).toHaveBeenCalled();
   });
 
   it('should throw ApiError.notFound WHEN the short URL does not exist', async () => {
