@@ -152,10 +152,6 @@ export const getSwaggerJsDoc = (baseUrl: string) => {
                     originalUrl: {
                       type: 'string',
                       example: 'https://web.whatsapp.com/'
-                    },
-                    clickCount: {
-                      type: 'integer',
-                      example: 0
                     }
                   },
                   required: ['originalUrl']
